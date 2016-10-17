@@ -19,39 +19,32 @@ Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'moll/vim-node'
 Plugin 'vim-scripts/delimitMate.vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+" Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'qpkorr/vim-bufkill'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'DanielFGray/DistractionFree.vim'
+" Plugin 'pangloss/vim-javascript'
+Plugin 'othree/yajs.vim'
+Plugin 'jacoborus/tender'
 Plugin 'scrooloose/syntastic'
+Plugin 'mxw/vim-jsx'
+Plugin 'junegunn/goyo.vim'
 
 Plugin 'edkolev/tmuxline.vim'
 
 call vundle#end()            " required
 
 " Please see http://dougblack.io/words/a-good-vimrc.html
-filetype on    " required
+" filetype on    " required
+filetype plugin on
 syntax enable " syntax highlighting
-
-" Theme
-
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-" if (empty($TMUX))
-"   if (has("nvim"))
-"   "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-"   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"   endif
-"   "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-"   "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-"   " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-"   if (has("termguicolors"))
-"     set termguicolors
-"   endif
-" endif
-
-color dracula
-
+" colorscheme onedark
+color dracula 
+" colorscheme tender
 set wildmenu " visual autocomplete
 set lazyredraw
 set showmatch
@@ -61,11 +54,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
-
-" Set relative number but show the current line number as absolute
 set rnu
-set nu
-
 set showcmd
 set cursorline
 nnoremap j gj
@@ -75,12 +64,11 @@ set foldmethod=indent
 set foldnestmax=1
 set nofoldenable
 
-" Indentation
-set smartindent
-set autoindent
+set hidden " Allow buffer switching without saving
 
-" Don't require saving buffer before switching
-set hidden
+" Indents
+set autoindent
+set smartindent
 
 " Mac OS X Clipboard
 set clipboard=unnamed
@@ -88,16 +76,17 @@ set clipboard=unnamed
 " Fix backspacing up a line
 set backspace=2
 
-" Map space to : for easier command usage
-noremap <space> :
-
 " move to beginning/end of line
-" nnoremap B ^
-" nnoremap E $
+nnoremap B ^
+nnoremap E $
+
+" Git Gutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
 
 " $/^ doesn't do anything
-" nnoremap $ <nop>
-" nnoremap ^ <nop>
+nnoremap $ <nop>
+nnoremap ^ <nop>
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -127,6 +116,9 @@ nnoremap <c-s-b> :CtrlPBuffer<CR>
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:tender_airline = 1
+" let g:airline_theme='tender'
+" let g:airline_theme='onedark'
 let g:airline_theme='dracula'
 set laststatus=2
 
@@ -138,6 +130,12 @@ set laststatus=2
 "     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 "     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " endif
+
+" Handle messy clipboard
+" http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
 
 " Automatically open Nerdtree when Vim opens
 " autocmd vimenter * NERDTree
@@ -155,13 +153,30 @@ set fillchars-=vert:\| | set fillchars+=vert:\
 " au BufWinLeave * mkview
 " au BufWinEnter * silent loadview
 
+" TypeScript Support
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+let g:typescript_compiler_binary = 'tsc'
+autocmd FileType typescript :set makeprg=tsc
+let g:typescript_compiler_options = ''
+
+" YAJS
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['']
+" let g:syntastic_javascript_checkers = ['standard']
+
+" JSX support
+let g:jsx_ext_required = 0
+
+" Distraction Free Vim
+nnoremap <Leader>df <Esc>:DistractionsToggle<CR>
+let g:distraction_free#toggle_tmux = 1
+let g:distraction_free#toggle_limelight = 1
