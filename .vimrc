@@ -55,6 +55,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set rnu
+set nu
 set showcmd
 set cursorline
 nnoremap j gj
@@ -180,3 +181,8 @@ let g:jsx_ext_required = 0
 nnoremap <Leader>df <Esc>:DistractionsToggle<CR>
 let g:distraction_free#toggle_tmux = 1
 let g:distraction_free#toggle_limelight = 1
+
+" Move backup, swap and undo
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
