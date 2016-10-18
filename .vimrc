@@ -33,6 +33,7 @@ Plugin 'jacoborus/tender'
 Plugin 'scrooloose/syntastic'
 Plugin 'mxw/vim-jsx'
 Plugin 'junegunn/goyo.vim'
+Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'edkolev/tmuxline.vim'
 
@@ -186,3 +187,12 @@ let g:distraction_free#toggle_limelight = 1
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+
+" Tag jumping :) 
+command! MakeTags !ctags -R .
+
+" Vim splits without c-w
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
