@@ -15,19 +15,16 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'dracula/vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'moll/vim-node'
 Plugin 'vim-scripts/delimitMate.vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'airblade/vim-gitgutter'
-" Plugin 'joshdick/onedark.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'DanielFGray/DistractionFree.vim'
-" Plugin 'pangloss/vim-javascript'
 Plugin 'othree/yajs.vim'
 Plugin 'jacoborus/tender'
 Plugin 'scrooloose/syntastic'
@@ -35,6 +32,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'junegunn/goyo.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'vimwiki/vimwiki'
 
 Plugin 'edkolev/tmuxline.vim'
 
@@ -45,9 +43,6 @@ call vundle#end()            " required
 filetype plugin on
 syntax enable " syntax highlighting
 set background=light " for Solarized only
-" colorscheme onedark
-" color dracula 
-" colorscheme tender
 colorscheme solarized
 set wildmenu " visual autocomplete
 set lazyredraw
@@ -112,8 +107,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" let g:ctrlp_user_command = 'find %s -type f' 
 
 " Leader B show CtrlP buffer
 nnoremap <c-s-b> :CtrlPBuffer<CR>
@@ -172,7 +165,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['']
@@ -192,10 +185,14 @@ set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
 " Tag jumping :) 
-command! MakeTags !ctags -R .
+" command! MakeTags !ctags -R .
+command! MakeTags !find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
 
 " Vim splits without c-w
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" Vimwiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
