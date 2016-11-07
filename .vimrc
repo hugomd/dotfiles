@@ -60,7 +60,8 @@ set cursorline
 nnoremap j gj
 nnoremap k gk
 set mouse=a
-set foldmethod=indent
+" set foldmethod=indent
+set foldmethod=syntax
 set foldnestmax=1
 set nofoldenable
 
