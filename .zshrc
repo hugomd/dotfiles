@@ -85,3 +85,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Must remain at the END of this file
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh

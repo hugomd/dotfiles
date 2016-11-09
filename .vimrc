@@ -146,7 +146,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 " nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Prettier vertical split
-set fillchars-=vert:\| | set fillchars+=vert:\ 
+set fillchars-=vert:\| | set fillchars+=vert:\
 
 " Open vim to last used line
 " au BufWinLeave * mkview
@@ -169,7 +169,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['']
+" let g:syntastic_javascript_checkers = ['']
 " let g:syntastic_javascript_checkers = ['standard']
 
 " JSX support
@@ -185,7 +185,7 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-" Tag jumping :) 
+" Tag jumping :)
 " command! MakeTags !ctags -R .
 command! MakeTags !find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
 
