@@ -18,6 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     javascript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -37,6 +38,8 @@ values."
      ;; spell-checking
      syntax-checking
      ;; version-control
+     (version-control :variables
+                      version-control-diff-tool 'diff-hl)
      osx
      )
    ;; List of additional packages that will be installed without being
