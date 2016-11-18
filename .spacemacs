@@ -19,7 +19,7 @@ values."
    dotspacemacs-configuration-layers
    '(
      javascript
-     ;; ----------------------------------------------------------------
+     ;; ----------------------------------------------e------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
@@ -114,8 +114,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Meslo LG M DZ for Powerline"
-                               :size 14
+   dotspacemacs-default-font '(;;"Meslo LG M DZ for Powerline"
+                               "PragmataPro for Powerline"
+                               :size 17
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
