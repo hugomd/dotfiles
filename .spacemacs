@@ -248,7 +248,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq powerline-default-separator 'box)
   )
 
 (defun dotspacemacs/user-config ()
@@ -269,8 +268,8 @@ you should place your code here."
   (getenv "PATH")
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append exec-path '("/usr/local/bin")))
-  (setq powerline-default-separator 'wave)
-  (setq ns-use-srgb-colorspace nil)
+  (setq powerline-default-separator nil)
+  ;; (setq ns-use-srgb-colorspace nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
