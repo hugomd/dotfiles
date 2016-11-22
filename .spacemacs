@@ -248,6 +248,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  (add-hook 'js2-mode-hook
+            (defun my-js2-mode-setup ()
+              (flycheck-mode t)
+              (when (executable-find "standard")
+                (flycheck-select-checker 'javascript-standard))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -264,7 +270,9 @@ you should place your code here."
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2)
   (setq-default js2-basic-offset 2
-                js-indent-level 2)
+                js-indent-level 2
+                js2-strict-missing-semi-warning nil
+                js2-missing-semi-one-line-override nil)
   (getenv "PATH")
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
   (setq exec-path (append exec-path '("/usr/local/bin")))
