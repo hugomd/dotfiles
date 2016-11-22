@@ -116,10 +116,10 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '(;;"Meslo LG M DZ for Powerline"
                                "PragmataPro for Powerline"
-                               :size 17
+                               :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.0)
+                               :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -249,6 +249,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq powerline-default-separator 'box)
   )
 
 (defun dotspacemacs/user-config ()
