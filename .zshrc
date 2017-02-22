@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/hmullerdowning/.oh-my-zsh
+export ZSH=/Users/hugo/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="dracula"
+# ZSH_THEME="dracula"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -84,5 +84,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Must remain at the END of this file
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+export PATH=/usr/local/sbin:$PATH
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ctags=/usr/local/bin/ctags
+alias tb="nc p.hu.md 9999"
+
+# Pure prompt
+autoload -U promptinit; promptinit
+PURE_PROMPT_SYMBOL=↳
+prompt pure
+
+export PATH="$HOME/.yarn/bin:$PATH"

@@ -29,6 +29,7 @@ Plugin 'othree/yajs.vim'
 Plugin 'jacoborus/tender'
 Plugin 'scrooloose/syntastic'
 Plugin 'mxw/vim-jsx'
+Plugin 'dracula/vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
@@ -42,8 +43,9 @@ call vundle#end()            " required
 " filetype on    " required
 filetype plugin on
 syntax enable " syntax highlighting
-set background=light " for Solarized only
-colorscheme solarized
+" set background=light " for Solarized only
+" colorscheme solarized
+color dracula
 set wildmenu " visual autocomplete
 set lazyredraw
 set showmatch
@@ -94,8 +96,8 @@ nnoremap gV `[v`]
 
 let mapleader=","       " leader is comma
 
-" jk is escape
-inoremap jk <esc>
+" jj is escape
+inoremap jj <esc>
 
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -118,17 +120,17 @@ let g:airline_powerline_fonts = 1
 " let g:tender_airline = 1
 " let g:airline_theme='tender'
 " let g:airline_theme='onedark'
-let g:airline_theme='solarized'
+let g:airline_theme='dracula'
 set laststatus=2
 
 " allows cursor change in tmux mode
-" if exists('$TMUX')
-"     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-"     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-" else
-"     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-" endif
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
 
 " Handle messy clipboard
 " http://stackoverflow.com/questions/11404800/fix-vim-tmux-yank-paste-on-unnamed-register
@@ -146,7 +148,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 " nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Prettier vertical split
-set fillchars-=vert:\| | set fillchars+=vert:\
+set fillchars=""
 
 " Open vim to last used line
 " au BufWinLeave * mkview
@@ -169,7 +171,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['']
+let g:syntastic_javascript_checkers = ['']
 " let g:syntastic_javascript_checkers = ['standard']
 
 " JSX support

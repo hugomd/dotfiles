@@ -64,7 +64,7 @@ module.exports = {
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: '',
+    shell: 'zsh',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
     // by default ['--login'] will be used
@@ -74,15 +74,24 @@ module.exports = {
     env: {},
 
     // set to false for no bell
-    bell: 'SOUND',
+    bell: false,
 
     // if true, selected text will automatically be copied to the clipboard
-    copyOnSelect: false
+    copyOnSelect: false,
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+    hyperlinks: {
+    },
+
+    hyperTabs: {
+      border: true,
+      tabIcons: true,
+      tabIconsColored: true,
+      activityColor: 'salmon'
+    }
   },
 
   // a list of plugins to fetch and install from npm
@@ -92,10 +101,11 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   plugins: [
-    'hyper-dark-dracula',
-    'hyper-blink',
+    'hyper-snazzy',
     'hyperlinks',
-    'hyper-statusline'
+    'hyper-statusline',
+    'hyper-tabs-enhanced',
+    'hypercwd'
   ],
 
   // in development, you can create a directory under
