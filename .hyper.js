@@ -83,9 +83,10 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-    hyperlinks: {
-    },
 
+    /**
+     * Plugin Config
+     */
     hyperTabs: {
       border: true,
       tabIcons: true,
@@ -100,8 +101,6 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  // 'hyper-dark-dracula',
-  // 'hyper-oceans16',
   plugins: [
     'hyper-snazzy',
     'hyperlinks',
