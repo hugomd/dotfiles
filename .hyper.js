@@ -10,7 +10,7 @@ module.exports = {
     cursorColor: 'rgba(248,28,229,0.8)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-    cursorShape: 'BLOCK',
+    cursorShape: 'BEAM',
 
     // color of the text
     foregroundColor: '#fff',
@@ -64,7 +64,7 @@ module.exports = {
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
-    shell: '',
+    shell: 'zsh',
 
     // for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
     // by default ['--login'] will be used
@@ -77,12 +77,21 @@ module.exports = {
     bell: 'SOUND',
 
     // if true, selected text will automatically be copied to the clipboard
-    copyOnSelect: false
+    copyOnSelect: false,
 
     // URL to custom bell
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
+    hyperlinks: {
+    },
+
+    hyperTabs: {
+      border: true,
+      tabIcons: true,
+      tabIconsColored: true,
+      activityColor: 'salmon'
+    }
   },
 
   // a list of plugins to fetch and install from npm
@@ -91,11 +100,14 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
+  // 'hyper-dark-dracula',
+  // 'hyper-oceans16',
   plugins: [
-    'hyper-dark-dracula',
-    'hyper-blink',
+    'hyper-snazzy',
     'hyperlinks',
-    'hyper-statusline'
+    'hyper-statusline',
+    'hyper-tabs-enhanced',
+    'hypercwd'
   ],
 
   // in development, you can create a directory under
