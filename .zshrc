@@ -96,3 +96,5 @@ PURE_PROMPT_SYMBOL=↳
 prompt pure
 
 export PATH="$HOME/.yarn/bin:$PATH"
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
