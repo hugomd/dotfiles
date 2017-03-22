@@ -99,15 +99,10 @@ module.exports = {
   // format: [@org/]project[#version]
   // examples:
   //   `hyperpower`
-  //   `@company/project`
-  //   `project#1.0.1`
-    // 'hyper-snazzy',
   plugins: [
-    //'hyperterm-tabs',
+    'hyperterm-tabs',
     'hyperlinks',
     'hyper-native',
-    // 'hyper-statusline',
-    // 'hyper-tabs-enhanced',
     'hypercwd'
   ],
 
