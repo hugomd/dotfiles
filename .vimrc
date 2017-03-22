@@ -12,8 +12,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Vim Airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'moll/vim-node'
@@ -45,7 +45,7 @@ filetype plugin on
 syntax enable " syntax highlighting
 " set background=light " for Solarized only
 " colorscheme solarized
-color dracula
+" color # dracula
 set wildmenu " visual autocomplete
 set lazyredraw
 set showmatch
@@ -83,6 +83,9 @@ set backspace=2
 nnoremap B ^
 nnoremap E $
 
+" Set UTF8
+set encoding=utf-8
+
 " Git Gutter
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
@@ -115,13 +118,11 @@ let g:ctrlp_working_path_mode = 0
 nnoremap <c-s-b> :CtrlPBuffer<CR>
 
 " Vim Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
 " let g:tender_airline = 1
-" let g:airline_theme='tender'
-" let g:airline_theme='onedark'
-let g:airline_theme='dracula'
-set laststatus=2
+" let g:airline_theme='dracula'
+" set laststatus=2
 
 " allows cursor change in tmux mode
 if exists('$TMUX')

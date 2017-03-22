@@ -10,7 +10,7 @@ module.exports = {
     cursorColor: 'rgba(248,28,229,0.8)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-    cursorShape: 'BLOCK',
+    cursorShape: 'BEAM',
 
     // color of the text
     foregroundColor: '#fff',
@@ -83,9 +83,10 @@ module.exports = {
     // bellSoundURL: 'http://example.com/bell.mp3',
 
     // for advanced config flags please refer to https://hyper.is/#cfg
-    hyperlinks: {
-    },
 
+    /**
+     * Plugin Config
+     */
     hyperTabs: {
       border: true,
       tabIcons: true,
@@ -98,14 +99,11 @@ module.exports = {
   // format: [@org/]project[#version]
   // examples:
   //   `hyperpower`
-  //   `@company/project`
-  //   `project#1.0.1`
   plugins: [
     'hyperterm-tabs',
     'hyper-snazzy',
     'hyperlinks',
-    'hyper-statusline',
-    'hyper-tabs-enhanced',
+    'hyper-native',
     'hypercwd'
   ],
 
