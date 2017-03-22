@@ -101,12 +101,14 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
+    // 'hyper-snazzy',
   plugins: [
-    'hyper-snazzy',
-    'hyperlinks',
-    'hyper-statusline',
-    'hyper-tabs-enhanced',
-    'hypercwd'
+    //'hyperterm-tabs',
+    // 'hyperlinks',
+    'hyper-native'
+    // 'hyper-statusline',
+    // 'hyper-tabs-enhanced',
+    // 'hypercwd'
   ],
 
   // in development, you can create a directory under
