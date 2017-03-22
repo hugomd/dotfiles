@@ -104,11 +104,11 @@ module.exports = {
     // 'hyper-snazzy',
   plugins: [
     //'hyperterm-tabs',
-    // 'hyperlinks',
-    'hyper-native'
+    'hyperlinks',
+    'hyper-native',
     // 'hyper-statusline',
     // 'hyper-tabs-enhanced',
-    // 'hypercwd'
+    'hypercwd'
   ],
 
   // in development, you can create a directory under
