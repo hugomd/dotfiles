@@ -10,5 +10,6 @@
     "workbench.colorTheme": "Solarized Light",
     "xo.enable": true,
     "window.zoomLevel": 1,
-    "editor.cursorBlinking": "solid"
+    "editor.cursorBlinking": "solid",
+    "vim.useSystemClipboard": true
   }
