@@ -104,7 +104,8 @@ module.exports = {
     'hyper-snazzy',
     'hyperlinks',
     'hyper-native',
-    'hypercwd'
+    'hypercwd',
+    'hyper-solarized-light'
   ],
 
   // in development, you can create a directory under
