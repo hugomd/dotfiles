@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.tabSize": 2,
+    "editor.fontFamily": "Operator Mono, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 16,
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "normal",
+    "workbench.activityBar.visible": false,
+    "workbench.statusBar.visible": false,
+    "workbench.colorTheme": "Solarized Light",
+    "xo.enable": true,
+    "window.zoomLevel": 1,
+    "editor.cursorBlinking": "solid"
+  }
