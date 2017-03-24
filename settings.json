@@ -7,7 +7,7 @@
     "editor.fontWeight": "normal",
     "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": false,
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Solarized Dark",
     "xo.enable": true,
     "window.zoomLevel": 1,
     "editor.cursorBlinking": "solid",
