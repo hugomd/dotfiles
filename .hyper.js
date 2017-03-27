@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     // default font size in pixels for all tabs
-    fontSize: 15,
+    fontSize: 20,
 
     // font family with optional fallbacks
     fontFamily: '"Operator Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -105,7 +105,7 @@ module.exports = {
     'hyperlinks',
     'hyper-native',
     'hypercwd',
-    'hyper-solarized-dark'
+    'hyper-solarized-light'
   ],
 
   // in development, you can create a directory under
