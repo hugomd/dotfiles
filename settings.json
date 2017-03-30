@@ -7,9 +7,11 @@
     "editor.fontWeight": "normal",
     "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": false,
-    "workbench.colorTheme": "Solarized Light",
+    "workbench.colorTheme": "Dracula",
     "xo.enable": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "editor.cursorBlinking": "solid",
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "editor.folding": false,
+    "editor.glyphMargin": 0
   }
