@@ -2,7 +2,7 @@
 {
     "editor.tabSize": 2,
     "editor.fontFamily": "Operator Mono, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 16,
+    "editor.fontSize": 18,
     "editor.fontLigatures": true,
     "editor.fontWeight": "normal",
     "workbench.activityBar.visible": false,
