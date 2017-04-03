@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.tabSize": 2,
-    "editor.fontFamily": "Operator Mono, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "Fira Code, Monaco, 'Courier New', monospace",
     "editor.fontSize": 18,
     "editor.fontLigatures": true,
     "editor.fontWeight": "normal",
