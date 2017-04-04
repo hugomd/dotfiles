@@ -103,8 +103,8 @@ module.exports = {
     'hyperterm-tabs',
     'hyper-snazzy',
     'hyperlinks',
-    'hyper-native',
-    'hypercwd'
+    'hypercwd',
+    'hyper-dracula'
   ],
 
   // in development, you can create a directory under
