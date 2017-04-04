@@ -200,3 +200,6 @@ nnoremap <c-l> <c-w>l
 
 " Vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+" Try to fix weird initial input garble
+set t_RV=
