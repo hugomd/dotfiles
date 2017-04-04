@@ -48,7 +48,6 @@ syntax enable " syntax highlighting
 color dracula
 set wildmenu " visual autocomplete
 set lazyredraw
-set ttyfast
 set showmatch
 set incsearch
 set hlsearch
@@ -59,7 +58,7 @@ set expandtab
 set rnu
 set nu
 set showcmd
-set cursorline
+" set cursorline
 nnoremap j gj
 nnoremap k gk
 " set mouse=a
@@ -174,7 +173,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['']
-let g:syntastic_javascript_checkers = ['standard']
+" let g:syntastic_javascript_checkers = ['standard']
 
 " JSX support
 let g:jsx_ext_required = 0

@@ -101,10 +101,10 @@ module.exports = {
   //   `hyperpower`
   plugins: [
     'hyperterm-tabs',
-    'hyper-snazzy',
     'hyperlinks',
     'hypercwd',
-    'hyper-dracula'
+    'hyper-dracula',
+    'hyper-tabs-enhanced'
   ],
 
   // in development, you can create a directory under
