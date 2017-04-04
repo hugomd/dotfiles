@@ -48,6 +48,7 @@ syntax enable " syntax highlighting
 color dracula
 set wildmenu " visual autocomplete
 set lazyredraw
+set ttyfast
 set showmatch
 set incsearch
 set hlsearch
@@ -61,11 +62,11 @@ set showcmd
 set cursorline
 nnoremap j gj
 nnoremap k gk
-set mouse=a
+" set mouse=a
 " set foldmethod=indent
-set foldmethod=syntax
-set foldnestmax=1
-set nofoldenable
+" set foldmethod=syntax
+" set foldnestmax=1
+" set nofoldenable
 
 set hidden " Allow buffer switching without saving
 
@@ -149,18 +150,18 @@ nmap <leader>n :NERDTreeToggle<CR>
 " nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Prettier vertical split
-set fillchars=""
+" set fillchars=""
 
 " Open vim to last used line
 " au BufWinLeave * mkview
 " au BufWinEnter * silent loadview
 
 " TypeScript Support
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-let g:typescript_compiler_binary = 'tsc'
-autocmd FileType typescript :set makeprg=tsc
-let g:typescript_compiler_options = ''
+" let g:typescript_compiler_binary = 'tsc'
+" let g:typescript_compiler_options = ''
+" let g:typescript_compiler_binary = 'tsc'
+" autocmd FileType typescript :set makeprg=tsc
+" let g:typescript_compiler_options = ''
 
 " YAJS
 " Syntastic
@@ -173,7 +174,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['']
-" let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['standard']
 
 " JSX support
 let g:jsx_ext_required = 0
@@ -190,7 +191,7 @@ set undodir=~/.vim/undo//
 
 " Tag jumping :)
 " command! MakeTags !ctags -R .
-command! MakeTags !find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
+" command! MakeTags !find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
 
 " Vim splits without c-w
 nnoremap <c-j> <c-w>j
@@ -199,7 +200,8 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 " Try to fix weird initial input garble
 set t_RV=
+
