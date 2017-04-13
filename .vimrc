@@ -18,22 +18,24 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdTree'
 Plugin 'moll/vim-node'
 Plugin 'vim-scripts/delimitMate.vim'
-Plugin 'leafgarland/typescript-vim'
+" Plugin 'leafgarland/typescript-vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'sheerun/vim-polyglot'
+" Plugin 'sheerun/vim-polyglot'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'DanielFGray/DistractionFree.vim'
-Plugin 'othree/yajs.vim'
+" Plugin 'DanielFGray/DistractionFree.vim'
+" Plugin 'othree/yajs.vim'
 Plugin 'jacoborus/tender'
 Plugin 'scrooloose/syntastic'
-Plugin 'mxw/vim-jsx'
+" Plugin 'mxw/vim-jsx'
 Plugin 'dracula/vim'
-Plugin 'junegunn/goyo.vim'
+" Plugin 'junegunn/goyo.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vimwiki/vimwiki'
+" Plugin 'vimwiki/vimwiki'
+" Plugin 'pangloss/vim-javascript'
+Plugin 'sindresorhus/vim-xo'
 
 Plugin 'edkolev/tmuxline.vim'
 
@@ -45,20 +47,22 @@ filetype plugin on
 syntax enable " syntax highlighting
 " set background=light " for Solarized only
 " colorscheme solarized
-color dracula
+colorscheme tender
 set wildmenu " visual autocomplete
 set lazyredraw
+set ttyfast
 set showmatch
 set incsearch
 set hlsearch
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set ai
 set expandtab
 set rnu
 set nu
 set showcmd
-" set cursorline
+set cursorline
 nnoremap j gj
 nnoremap k gk
 " set mouse=a
@@ -121,7 +125,7 @@ nnoremap <c-s-b> :CtrlPBuffer<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:tender_airline = 1
-let g:airline_theme='dracula'
+let g:airline_theme='tender'
 set laststatus=2
 
 " allows cursor change in tmux mode
@@ -149,7 +153,7 @@ nmap <leader>n :NERDTreeToggle<CR>
 " nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Prettier vertical split
-" set fillchars=""
+set fillchars=""
 
 " Open vim to last used line
 " au BufWinLeave * mkview
@@ -172,8 +176,14 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['']
+
+" ESLint
+" let g:syntastic_javascript_eslint_generic = 1
+" let g:syntastic_javascript_eslint_exec = 'xo'
+" let g:syntastic_javascript_esling_args = '--compact'
+" let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_checkers = ['standard']
+let g:syntastic_javascript_checkers = ['xo']
 
 " JSX support
 let g:jsx_ext_required = 0
@@ -204,3 +214,6 @@ nnoremap <c-l> <c-w>l
 " Try to fix weird initial input garble
 set t_RV=
 
+" Automatically reload modified files!
+set autoread
+autocmd FocusGained * checktime
