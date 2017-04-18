@@ -14,39 +14,48 @@ Plugin 'VundleVim/Vundle.vim'
 " Vim Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+
+" CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
+
+" Nerd Tree
 Plugin 'scrooloose/nerdTree'
+
+" Syntax
 Plugin 'moll/vim-node'
+Plugin 'scrooloose/syntastic'
+Plugin 'pangloss/vim-javascript'
+Plugin 'DanielFGray/DistractionFree.vim'
+
+" Linting
+Plugin 'sindresorhus/vim-xo'
+
+" Movement, etc
 Plugin 'vim-scripts/delimitMate.vim'
-" Plugin 'leafgarland/typescript-vim'
-Plugin 'airblade/vim-gitgutter'
-" Plugin 'sheerun/vim-polyglot'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-" Plugin 'DanielFGray/DistractionFree.vim'
-" Plugin 'othree/yajs.vim'
-Plugin 'jacoborus/tender'
-Plugin 'scrooloose/syntastic'
-" Plugin 'mxw/vim-jsx'
-Plugin 'dracula/vim'
-" Plugin 'junegunn/goyo.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'altercation/vim-colors-solarized'
-" Plugin 'vimwiki/vimwiki'
-" Plugin 'pangloss/vim-javascript'
-Plugin 'sindresorhus/vim-xo'
 
+" Layout, panes, etc
+Plugin 'junegunn/goyo.vim'
+
+" Git
+Plugin 'airblade/vim-gitgutter'
+
+" Colorschemes
+Plugin 'jacoborus/tender'
+Plugin 'dracula/vim'
+Plugin 'altercation/vim-colors-solarized'
+
+" Tmux
+Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'edkolev/tmuxline.vim'
 
 call vundle#end()            " required
 
 " Please see http://dougblack.io/words/a-good-vimrc.html
-" filetype on    " required
 filetype plugin on
 syntax enable " syntax highlighting
-" set background=light " for Solarized only
-" colorscheme solarized
 colorscheme tender
 set wildmenu " visual autocomplete
 set lazyredraw
@@ -65,13 +74,9 @@ set showcmd
 set cursorline
 nnoremap j gj
 nnoremap k gk
-" set mouse=a
-" set foldmethod=indent
-" set foldmethod=syntax
-" set foldnestmax=1
-" set nofoldenable
 
-set hidden " Allow buffer switching without saving
+" Allow buffer switching without saving
+set hidden
 
 " Indents
 set autoindent
@@ -143,30 +148,12 @@ if $TMUX == ''
   set clipboard+=unnamed
 endif
 
-" Automatically open Nerdtree when Vim opens
-" autocmd vimenter * NERDTree
-
 " Open nerd tree with leader keey
 nmap <leader>n :NERDTreeToggle<CR>
-
-" Buffer searching
-" nnoremap <Leader>b :ls<CR>:b<Space>
 
 " Prettier vertical split
 set fillchars=""
 
-" Open vim to last used line
-" au BufWinLeave * mkview
-" au BufWinEnter * silent loadview
-
-" TypeScript Support
-" let g:typescript_compiler_binary = 'tsc'
-" let g:typescript_compiler_options = ''
-" let g:typescript_compiler_binary = 'tsc'
-" autocmd FileType typescript :set makeprg=tsc
-" let g:typescript_compiler_options = ''
-
-" YAJS
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -177,12 +164,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" ESLint
-" let g:syntastic_javascript_eslint_generic = 1
-" let g:syntastic_javascript_eslint_exec = 'xo'
-" let g:syntastic_javascript_esling_args = '--compact'
-" let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_checkers = ['standard']
+" Use XO linter
 let g:syntastic_javascript_checkers = ['xo']
 
 " JSX support
@@ -198,21 +180,11 @@ set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
 
-" Tag jumping :)
-" command! MakeTags !ctags -R .
-" command! MakeTags !find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | sort > tags
-
 " Vim splits without c-w
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-
-" Vimwiki
-" let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
-
-" Try to fix weird initial input garble
-set t_RV=
 
 " Automatically reload modified files!
 set autoread
