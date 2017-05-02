@@ -189,3 +189,6 @@ nnoremap <c-l> <c-w>l
 " Automatically reload modified files!
 set autoread
 autocmd FocusGained * checktime
+
+" Ignore node_modules in vimgrep
+set wildignore+=node_modules/**
