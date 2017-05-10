@@ -20,6 +20,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 " Nerd Tree
 Plugin 'scrooloose/nerdTree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " Syntax
 Plugin 'moll/vim-node'
@@ -71,7 +72,12 @@ set expandtab
 set rnu
 set nu
 set showcmd
+
+" highlight current line and column
 set cursorline
+set cursorcolumn
+
+" j and k use visual lines
 nnoremap j gj
 nnoremap k gk
 
@@ -192,3 +198,8 @@ autocmd FocusGained * checktime
 
 " Ignore node_modules in vimgrep
 set wildignore+=node_modules/**
+
+" Prettier Formatting for JS
+" autocmd FileType javascript setlocal formatprg=prettier\ --stdin
+" autocmd BufWritePre *.js :normal gggqG
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
