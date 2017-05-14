@@ -25,6 +25,7 @@ Plugin 'scrooloose/nerdTree'
 Plugin 'moll/vim-node'
 Plugin 'scrooloose/syntastic'
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 Plugin 'DanielFGray/DistractionFree.vim'
 
 " Linting
@@ -46,6 +47,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jacoborus/tender'
 Plugin 'dracula/vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'mhartington/oceanic-next'
 
 " Tmux
 Plugin 'christoomey/vim-tmux-navigator'
@@ -56,7 +58,7 @@ call vundle#end()            " required
 " Please see http://dougblack.io/words/a-good-vimrc.html
 filetype plugin on
 syntax enable " syntax highlighting
-colorscheme tender
+colorscheme OceanicNext
 set wildmenu " visual autocomplete
 set lazyredraw
 set ttyfast
@@ -130,7 +132,7 @@ nnoremap <c-s-b> :CtrlPBuffer<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:tender_airline = 1
-let g:airline_theme='tender'
+let g:airline_theme='oceanicnext'
 set laststatus=2
 
 " allows cursor change in tmux mode
