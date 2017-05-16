@@ -59,7 +59,7 @@ call vundle#end()            " required
 " Please see http://dougblack.io/words/a-good-vimrc.html
 filetype plugin on
 syntax enable " syntax highlighting
-colorscheme OceanicNext
+colorscheme dracula
 set wildmenu " visual autocomplete
 set lazyredraw
 set ttyfast
@@ -77,7 +77,7 @@ set showcmd
 
 " highlight current line and column
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 " j and k use visual lines
 nnoremap j gj
@@ -138,7 +138,7 @@ nnoremap <c-s-b> :CtrlPBuffer<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:tender_airline = 1
-let g:airline_theme='oceanicnext'
+let g:airline_theme='dracula'
 set laststatus=2
 
 " allows cursor change in tmux mode
