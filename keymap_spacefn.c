@@ -12,17 +12,17 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|
      * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|  Bsp|
      * |-----------------------------------------------------------|
-     * |Contro|  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Enter   |
+     * |FN4   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Enter   |
      * |-----------------------------------------------------------|
-     * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift |Fn0|
+     * |FN5   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|FN6     |Fn0|
      * `-----------------------------------------------------------'
      *       |Alt|Gui  |         SpaceFN       |Alt  |Gui|
      *       `-------------------------------------------'
      */
     KEYMAP(ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSLS, GRV,  \
            TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC,       \
-           LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT,             \
-           LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,RSFT,FN0,             \
+           FN4,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT,              \
+           FN5,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,FN6,FN0,               \
                 LALT,LGUI,          FN1,                RALT,RGUI),
 
     /* Layer 1: HHKB mode (HHKB Fn)
@@ -70,6 +70,8 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 enum function_id {
     CTRL_SPACE_I,       // Ctrl + Up(SpaceFN) -> PgUp
+    LSHIFT_LPAREN,
+    RSHIFT_RPAREN,
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -101,6 +103,60 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
                 }
             }
             break;
+        case LSHIFT_LPAREN:
+            // Shift parentheses example: LShft + tap '('
+            // http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#shift-parentheses
+            // http://geekhack.org/index.php?topic=41989.msg1304899#msg1304899
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_LSHIFT));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_LSHIFT));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    register_code(KC_9);
+                    unregister_code(KC_9);
+                    del_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_LSHIFT));
+                }
+            }
+            break;
+        case RSHIFT_RPAREN:
+            // Shift parentheses example: LShft + tap '('
+            // http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#shift-parentheses
+            // http://geekhack.org/index.php?topic=41989.msg1304899#msg1304899
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_RSHIFT));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_RSHIFT));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_RSHIFT));
+                    send_keyboard_report();
+                    register_code(KC_0);
+                    unregister_code(KC_0);
+                    del_weak_mods(MOD_BIT(KC_RSHIFT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_RSHIFT));
+                }
+            }
+            break;
     }
 }
 
@@ -113,4 +169,7 @@ const action_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_TAP_KEY(2, KC_SPACE),
     [2] = ACTION_MODS_KEY(MOD_LSFT, KC_GRV),    // tilde
     [3] = ACTION_FUNCTION(CTRL_SPACE_I),        // Ctrl + Up(SpaceFN) -> PgUp
+    [4] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
+    [5] = ACTION_FUNCTION_TAP(LSHIFT_LPAREN),
+    [6] = ACTION_FUNCTION_TAP(RSHIFT_RPAREN),
 };
