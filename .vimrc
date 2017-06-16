@@ -137,9 +137,25 @@ nnoremap <c-s-b> :CtrlPBuffer<CR>
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:tender_airline = 1
 let g:airline_theme='dracula'
 set laststatus=2
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '',
+      \'c'    : '',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '',
+      \'y'    : ['%R', 'mbp'],
+      \'z'    : ''}
+
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
@@ -167,13 +183,16 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
 " Use XO linter
 let g:syntastic_javascript_checkers = ['xo']
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+
+" Disable syntastic by default
+autocmd VimEnter * SyntasticToggleMode
 
 " JSX support
 let g:jsx_ext_required = 0

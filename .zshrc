@@ -98,3 +98,5 @@ alias tb="nc p.hu.md 9999"
 export PATH="$HOME/.yarn/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+alias npmp='npm --userconfig=~/.npmrc-personal'
