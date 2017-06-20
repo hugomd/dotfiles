@@ -100,3 +100,4 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
 alias npmp='npm --userconfig=~/.npmrc-personal'
+alias vim=nvim
