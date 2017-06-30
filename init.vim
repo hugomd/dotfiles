@@ -13,13 +13,11 @@ Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
 
 " Syntax
 Plug 'moll/vim-node', { 'for': 'javascript' }
-Plug 'scrooloose/syntastic'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'sbdchd/neoformat'
 
 " Linting
-Plug 'sindresorhus/vim-xo', { 'for': 'javascript' }
 Plug 'w0rp/ale'
 
 " Movement, etc
@@ -52,6 +50,7 @@ set wildmenu
 set showmatch
 set incsearch
 set hlsearch
+set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -151,26 +150,10 @@ nmap <leader>n :NERDTreeToggle<CR>
 " Prettier vertical split
 set fillchars=""
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" Use XO linter
-let g:syntastic_javascript_checkers = ['xo']
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
 " Ale
-" let g:ale_linters = {
-" \   'javascript': ['xo'],
-" \}
-
-" Disable syntastic by default
-autocmd VimEnter * SyntasticToggleMode
+let g:ale_linters = {
+\   'javascript': ['xo'],
+\}
 
 " JSX support
 let g:jsx_ext_required = 0
