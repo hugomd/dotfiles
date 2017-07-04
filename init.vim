@@ -16,8 +16,6 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'sbdchd/neoformat'
-
-" Linting
 Plug 'w0rp/ale'
 
 " Movement, etc
@@ -32,6 +30,7 @@ Plug 'chrisbra/NrrwRgn'
 
 " Git
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " Colorschemes
 Plug 'dracula/vim'
@@ -71,6 +70,10 @@ nnoremap k gk
 " Allow buffer switching without saving
 set hidden
 
+" Cycle through buffers
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+
 " Indents
 set autoindent
 set smartindent
@@ -101,7 +104,7 @@ let mapleader=" "       " leader is space
 " jj is escape
 inoremap jj <esc>
 
-nnoremap <leader><space> :nohlsearch<CR>
+" nnoremap <leader><h> :nohlsearch<CR>
 
 " CtrlP settings
 let g:ctrlp_custom_ignore = {
@@ -151,9 +154,20 @@ nmap <leader>n :NERDTreeToggle<CR>
 set fillchars=""
 
 " Ale
+let g:ale_lint_on_enter = 0
+
 let g:ale_linters = {
 \   'javascript': ['xo'],
 \}
+let g:ale_javascript_xo_use_global = 0
+let g:ale_javascript_xo_options = '--space'
+
+let g:airline#extensions#ale#enabled = 1
+
+" Use C-k and C-j to skip to next/previous ALE issues
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 
 " JSX support
 let g:jsx_ext_required = 0
@@ -176,8 +190,10 @@ set wildignore+=node_modules/**
 set suffixesadd=.js,.css
 
 " Run Neoformat on save
-autocmd BufWritePre *.js Neoformat
+" autocmd BufWritePre *.js :normal gggqG
 
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5\ --tab-width\ 2\ --bracket-spacing
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+
+" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5\ --tab-width\ 2\ --bracket-spacing
 " Use formatprg when available
-let g:neoformat_try_formatprg = 1
+"" let g:neoformat_try_formatprg = 1
