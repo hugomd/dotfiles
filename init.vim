@@ -15,7 +15,7 @@ Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'elixir-lange/vim-elixir'
+Plug 'elixir-lang/vim-elixir'
 Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
 
