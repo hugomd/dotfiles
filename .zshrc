@@ -101,6 +101,7 @@ export PATH=$PATH:$GOPATH/bin
 
 alias npmp='npm --userconfig=~/.npmrc-personal'
 alias vim=nvim
+alias ls=exa
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
