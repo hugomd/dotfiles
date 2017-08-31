@@ -10,6 +10,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Nerd Tree
 Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Syntax
 Plug 'moll/vim-node', { 'for': 'javascript' }
@@ -20,6 +21,15 @@ Plug 'w0rp/ale'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sbdchd/neoformat'
+
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'slashmili/alchemist.vim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+" Search
+Plug 'eugen0329/vim-esearch'
 
 " Movement, etc
 Plug 'vim-scripts/delimitMate.vim'
@@ -151,7 +161,7 @@ if $TMUX == ''
 endif
 
 " Open nerd tree with leader keey
-nmap <leader>n :NERDTreeToggle<CR>
+nnoremap <C-e> :NERDTreeToggle<CR>
 
 " Prettier vertical split
 set fillchars=""
@@ -194,3 +204,21 @@ set suffixesadd=.js,.css
 
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
+
+" Run Neoformat on save
+" autocmd BufWritePre *.js :normal gggqG
+
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+
+" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5\ --tab-width\ 2\ --bracket-spacing
+" Use formatprg when available
+"" let g:neoformat_try_formatprg = 1
+
+" Search
+let g:esearch = {
+  \ 'adapter':    'grep',
+  \ 'backend':    'nvim',
+  \ 'out':        'win',
+  \ 'batch_size': 1000,
+  \ 'use':        ['visual', 'hlsearch', 'last'],
+  \}
