@@ -15,9 +15,11 @@ Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'elixir-lange/vim-elixir'
-Plug 'sbdchd/neoformat'
+Plug 'elixir-lang/vim-elixir'
 Plug 'w0rp/ale'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Movement, etc
 Plug 'vim-scripts/delimitMate.vim'
@@ -190,11 +192,5 @@ set wildignore+=node_modules/**
 " Fix neovim not finding files using `gf`
 set suffixesadd=.js,.css
 
-" Run Neoformat on save
-" autocmd BufWritePre *.js :normal gggqG
-
-" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-
-" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5\ --tab-width\ 2\ --bracket-spacing
-" Use formatprg when available
-"" let g:neoformat_try_formatprg = 1
+" Enable deoplete
+let g:deoplete#enable_at_startup = 1
