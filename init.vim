@@ -19,8 +19,11 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 
 Plug 'elixir-lang/vim-elixir'
-Plug 'sbdchd/neoformat'
 Plug 'w0rp/ale'
+
+" Autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sbdchd/neoformat'
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -201,6 +204,9 @@ set wildignore+=node_modules/**
 " Fix neovim not finding files using `gf`
 set suffixesadd=.js,.css
 
+" Enable deoplete
+let g:deoplete#enable_at_startup = 1
+
 " Run Neoformat on save
 " autocmd BufWritePre *.js :normal gggqG
 
@@ -209,9 +215,6 @@ set suffixesadd=.js,.css
 " autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5\ --tab-width\ 2\ --bracket-spacing
 " Use formatprg when available
 "" let g:neoformat_try_formatprg = 1
-
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
 
 " Search
 let g:esearch = {
