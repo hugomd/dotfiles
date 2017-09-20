@@ -8,6 +8,9 @@ Plug 'vim-airline/vim-airline-themes'
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 
+" Colemak
+" Plug 'jooize/vim-colemak'
+
 " Nerd Tree
 Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -119,7 +122,7 @@ let mapleader=" "       " leader is space
 " jj is escape
 inoremap jj <esc>
 
-" nnoremap <leader><h> :nohlsearch<CR>
+set mouse=a
 
 " CtrlP settings
 let g:ctrlp_custom_ignore = {
@@ -224,3 +227,9 @@ let g:esearch = {
   \ 'batch_size': 1000,
   \ 'use':        ['visual', 'hlsearch', 'last'],
   \}
+
+" Fix for Colemak
+" augroup RemoveFugitiveMappingForColemak
+"   autocmd!
+"   autocmd BufEnter * silent! execute "nunmap <buffer> <silent> y<C-G>"
+" augroup END
