@@ -13,24 +13,25 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Nerd Tree
 Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
 " Syntax
 Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql'] }
 
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'w0rp/ale'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sbdchd/neoformat'
+Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 
 " Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'slashmili/alchemist.vim'
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " Search
@@ -41,14 +42,16 @@ Plug 'vim-scripts/delimitMate.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'wellle/targets.vim'
 
 " Layout, panes, etc
-Plug 'junegunn/goyo.vim'
-Plug 'chrisbra/NrrwRgn'
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+Plug 'chrisbra/NrrwRgn', { 'on': 'NRL' }
 
 " Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
 Plug 'dracula/vim'
@@ -178,7 +181,7 @@ let g:ale_linters = {
 \   'javascript': ['xo'],
 \}
 let g:ale_javascript_xo_use_global = 0
-let g:ale_javascript_xo_options = '--space'
+" let g:ale_javascript_xo_options = '--space'
 
 let g:airline#extensions#ale#enabled = 1
 
@@ -210,14 +213,11 @@ set suffixesadd=.js,.css
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
 
-" Run Neoformat on save
-" autocmd BufWritePre *.js :normal gggqG
+let g:prettier#config#use_tabs = 'true'
+let g:prettier#config#semi = 'true'
+let g:prettier#config#semi = 'true'
+let g:prettier#config#trailing_comma = 'none'
 
-" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-
-" autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ es5\ --tab-width\ 2\ --bracket-spacing
-" Use formatprg when available
-"" let g:neoformat_try_formatprg = 1
 
 " Search
 let g:esearch = {
@@ -228,8 +228,4 @@ let g:esearch = {
   \ 'use':        ['visual', 'hlsearch', 'last'],
   \}
 
-" Fix for Colemak
-" augroup RemoveFugitiveMappingForColemak
-"   autocmd!
-"   autocmd BufEnter * silent! execute "nunmap <buffer> <silent> y<C-G>"
-" augroup END
+let g:esearch#adapter#grep#options = '--exclude-dir=node_modules'
