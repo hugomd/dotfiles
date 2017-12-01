@@ -30,9 +30,11 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 
 " Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-completion-manager'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " Search
 Plug 'eugen0329/vim-esearch'
@@ -55,6 +57,7 @@ Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
 Plug 'dracula/vim'
+Plug 'mhartington/oceanic-next'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -78,7 +81,11 @@ set rnu
 set nu
 
 " Colorscheme
-colorscheme dracula
+" colorscheme dracula
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme OceanicNext
 
 " highlight current line and column
 set cursorline
@@ -140,7 +147,8 @@ let g:ctrlp_working_path_mode = 0
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='dracula'
+" let g:airline_theme='dracula'
+let g:airline_theme='oceanicnext'
 set laststatus=2
 
 let g:tmuxline_preset = {
@@ -229,3 +237,11 @@ let g:esearch = {
   \}
 
 let g:esearch#adapter#grep#options = '--exclude-dir=node_modules'
+
+" Completion https://github.com/roxma/nvim-completion-manager#features
+" Enter sends new line and hides completion bar
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select popup menu
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
