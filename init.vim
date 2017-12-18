@@ -16,11 +16,10 @@ Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
 " Syntax
-Plug 'moll/vim-node', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
-Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql'] }
+Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown'] }
 
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'w0rp/ale'
@@ -32,9 +31,7 @@ Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 " Completion
 Plug 'roxma/nvim-completion-manager'
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " Search
 Plug 'eugen0329/vim-esearch'
@@ -69,6 +66,7 @@ call plug#end()
 " Defaults
 filetype plugin on
 syntax enable
+set lazyredraw
 set wildmenu
 set showmatch
 set incsearch
@@ -85,10 +83,10 @@ set nu
 if (has("termguicolors"))
  set termguicolors
 endif
-colorscheme OceanicNext
+colorscheme dracula
 
 " highlight current line and column
-set cursorline
+" set cursorline
 " set cursorcolumn
 
 " j and k use visual lines
@@ -147,8 +145,7 @@ let g:ctrlp_working_path_mode = 0
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='dracula'
-let g:airline_theme='oceanicnext'
+let g:airline_theme='dracula'
 set laststatus=2
 
 let g:tmuxline_preset = {
