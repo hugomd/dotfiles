@@ -5,28 +5,24 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" CtrlP
-Plug 'ctrlpvim/ctrlp.vim'
+" fzf
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " Colemak
 " Plug 'jooize/vim-colemak'
-
-" Nerd Tree
-Plug 'scrooloose/nerdTree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 
 " Syntax
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
-Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown'] }
+Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'md'] }
 
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'w0rp/ale'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sbdchd/neoformat', { 'on': 'Neoformat' }
 
 " Completion
 Plug 'roxma/nvim-completion-manager'
@@ -38,14 +34,12 @@ Plug 'eugen0329/vim-esearch'
 
 " Movement, etc
 Plug 'vim-scripts/delimitMate.vim'
-Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
 
 " Layout, panes, etc
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
-Plug 'chrisbra/NrrwRgn', { 'on': 'NRL' }
 
 " Git
 Plug 'airblade/vim-gitgutter'
@@ -54,7 +48,7 @@ Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
 Plug 'dracula/vim'
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -69,20 +63,32 @@ syntax enable
 set lazyredraw
 set wildmenu
 set showmatch
+
+" Search as you type
 set incsearch
+" Highlight search results
 set hlsearch
-set expandtab
+set ignorecase
+set smartcase
+" Stop highlighting on enter
+map <CR> :noh<CR> 
+
+" set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set rnu
 set nu
 
+set title
+
 " Colorscheme
-" colorscheme dracula
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
 if (has("termguicolors"))
  set termguicolors
 endif
+
 colorscheme dracula
 
 " highlight current line and column
@@ -97,8 +103,8 @@ nnoremap k gk
 set hidden
 
 " Cycle through buffers
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <Tab> :tabn<CR>
+nnoremap <S-Tab> :tabp<CR>
 
 " Indents
 set autoindent
@@ -132,15 +138,11 @@ inoremap jj <esc>
 
 set mouse=a
 
-" CtrlP settings
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](.git|.hg|.svn|node_modules)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
+" fzf settings
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+nnoremap <C-p> :Files<CR>
 
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -172,9 +174,6 @@ endif
 if $TMUX == ''
   set clipboard+=unnamed
 endif
-
-" Open nerd tree with leader keey
-nnoremap <C-e> :NERDTreeToggle<CR>
 
 " Prettier vertical split
 set fillchars=""
@@ -218,12 +217,6 @@ set suffixesadd=.js,.css
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
 
-let g:prettier#config#use_tabs = 'true'
-let g:prettier#config#semi = 'true'
-let g:prettier#config#semi = 'true'
-let g:prettier#config#trailing_comma = 'none'
-
-
 " Search
 let g:esearch = {
   \ 'adapter':    'grep',
@@ -242,3 +235,6 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 " Use <TAB> to select popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Terminal remapping
+tnoremap kj <C-\><C-n>
