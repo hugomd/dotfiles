@@ -105,5 +105,13 @@ alias ls=exa
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
-# Disable tmux auto-rename
-export DISABLE_AUTO_TITLE=true
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hugo/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/hugo/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Use fd by default for fzf
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
