@@ -151,14 +151,17 @@ let g:airline_theme='dracula'
 set laststatus=2
 
 let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '',
-      \'c'    : '',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '',
-      \'y'    : ['%R', 'mbp'],
-      \'z'    : ''}
+        \ 'a': '#S',
+        \ 'b': '',
+        \ 'c': '',
+        \ 'win': '#I #W',
+        \ 'cwin': '#I #W',
+        \ 'x': '',
+        \ 'y': ['%R'],
+        \ 'z': 'mbp',
+				\ 'options': {
+        \'status-justify': 'left'}
+        \}
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
