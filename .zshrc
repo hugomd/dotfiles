@@ -112,6 +112,6 @@ if [ -f '/Users/hugo/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/U
 if [ -f '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Use fd by default for fzf
-export FZF_DEFAULT_COMMAND='fd --type f'
+# export FZF_DEFAULT_COMMAND='fd --type f'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

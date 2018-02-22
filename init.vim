@@ -60,7 +60,7 @@ call plug#end()
 " Defaults
 filetype plugin on
 syntax enable
-set lazyredraw
+" set lazyredraw
 set wildmenu
 set showmatch
 
@@ -140,9 +140,8 @@ set mouse=a
 
 " fzf settings
 nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
-nmap <Leader>r :Tags<CR>
-nnoremap <C-p> :Files<CR>
+nnoremap <C-g> :GitFiles?<CR>
+nnoremap <C-p> :GitFiles<CR>
 
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -241,3 +240,13 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Terminal remapping
 tnoremap kj <C-\><C-n>
+
+" toggle invisible characters
+set list
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set showbreak=↪
+
+set noshowcmd
+set lazyredraw
+" set nolazyredraw
+hi Normal ctermbg=NONE guibg=NONE
