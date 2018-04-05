@@ -48,7 +48,6 @@ Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
 Plug 'dracula/vim'
-" Plug 'mhartington/oceanic-next'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -73,7 +72,7 @@ set smartcase
 " Stop highlighting on enter
 map <CR> :noh<CR> 
 
-" set expandtab
+set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -83,8 +82,6 @@ set nu
 set title
 
 " Colorscheme
-" let g:oceanic_next_terminal_bold = 1
-" let g:oceanic_next_terminal_italic = 1
 if (has("termguicolors"))
  set termguicolors
 endif
@@ -162,6 +159,8 @@ let g:tmuxline_preset = {
         \'status-justify': 'left'}
         \}
 
+let g:tmuxline_powerline_separators = 0
+
 " allows cursor change in tmux mode
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -184,11 +183,14 @@ set fillchars=""
 let g:ale_lint_on_enter = 0
 
 let g:ale_linters = {
-\   'javascript': ['xo'],
+\   'javascript': ['eslint', 'xo'],
 \}
 let g:ale_javascript_xo_use_global = 0
 " let g:ale_javascript_xo_options = '--space'
 
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
 let g:airline#extensions#ale#enabled = 1
 
 " Use C-k and C-j to skip to next/previous ALE issues
@@ -250,3 +252,19 @@ set noshowcmd
 set lazyredraw
 " set nolazyredraw
 hi Normal ctermbg=NONE guibg=NONE
+
+" Toggle tabs
+function TabToggle()
+	if &expandtab
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2
+		set shiftwidth=2
+		set softtabstop=0
+		set noexpandtab
+	else
+		set shiftwidth=2
+		set softtabstop=2
+		set expandtab
+	endif
+endfunction
