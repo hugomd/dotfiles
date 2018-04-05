@@ -49,7 +49,7 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git)
 
 # User configuration
 
@@ -97,10 +97,12 @@ ctags=/usr/local/bin/ctags
 export PATH="$HOME/.yarn/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$HOME/.cargo/env
 
 alias npmp='npm --userconfig=~/.npmrc-personal'
 alias vim=nvim
 alias ls=exa
+alias marked="open -a Marked"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
@@ -111,7 +113,23 @@ if [ -f '/Users/hugo/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/U
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Use fd by default for fzf
-# export FZF_DEFAULT_COMMAND='fd --type f'
+# Vim mode
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
+
+export FZF_DEFAULT_OPTS='--height 20%'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
