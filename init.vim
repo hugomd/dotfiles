@@ -9,14 +9,17 @@ Plug 'vim-airline/vim-airline-themes'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
-" Colemak
-" Plug 'jooize/vim-colemak'
+" Nerdtree & icons
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Syntax
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'md'] }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
 
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'w0rp/ale'
@@ -59,9 +62,9 @@ call plug#end()
 " Defaults
 filetype plugin on
 syntax enable
-" set lazyredraw
 set wildmenu
 set showmatch
+set encoding=UTF-8
 
 " Search as you type
 set incsearch
@@ -152,14 +155,14 @@ let g:tmuxline_preset = {
         \ 'c': '',
         \ 'win': '#I #W',
         \ 'cwin': '#I #W',
-        \ 'x': '',
+        \ 'x': '', 
         \ 'y': ['%R'],
         \ 'z': 'mbp',
 				\ 'options': {
         \'status-justify': 'left'}
         \}
 
-let g:tmuxline_powerline_separators = 0
+let g:tmuxline_powerline_separators = 1
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
@@ -182,16 +185,25 @@ set fillchars=""
 " Ale
 let g:ale_lint_on_enter = 0
 
-let g:ale_linters = {
-\   'javascript': ['eslint', 'xo'],
-\}
-let g:ale_javascript_xo_use_global = 0
-" let g:ale_javascript_xo_options = '--space'
+" let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '🚨'
+" let g:ale_sign_warning = '⚠️'
+" 
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
 
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\}
-let g:airline#extensions#ale#enabled = 1
+" let g:ale_linters = {
+" \   'javascript': ['standard'],
+" \}
+" let g:ale_javascript_xo_use_global = 0
+" let g:ale_javascript_standard_use_global = 0
+" 
+"  " , 'xo', 'eslint'
+" let g:ale_fixers = {
+" \   'javascript': ['prettier', 'standard'],
+" \}
+" let g:airline#extensions#ale#enabled = 1
+" let g:ale_javascript_prettier_use_local_config = 1
 
 " Use C-k and C-j to skip to next/previous ALE issues
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -243,14 +255,20 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " Terminal remapping
 tnoremap kj <C-\><C-n>
 
+" NerdTree Mapping
+map <C-e> :NERDTreeToggle<CR>
+
+" Vim devicons
+let g:webdevicons_enable_nerdtree = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+
 " toggle invisible characters
 set list
 set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 set showbreak=↪
 
-set noshowcmd
-set lazyredraw
-" set nolazyredraw
+set showcmd
 hi Normal ctermbg=NONE guibg=NONE
 
 " Toggle tabs
@@ -268,3 +286,7 @@ function TabToggle()
 		set expandtab
 	endif
 endfunction
+
+" Enable per project configuration https://andrew.stwrt.ca/posts/project-specific-vimrc/
+set exrc
+set secure
