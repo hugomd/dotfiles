@@ -256,7 +256,7 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 tnoremap kj <C-\><C-n>
 
 " NerdTree Mapping
-map <C-e> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 
 " Vim devicons
 let g:webdevicons_enable_nerdtree = 1
