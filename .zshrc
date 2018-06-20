@@ -49,7 +49,7 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
@@ -116,8 +116,6 @@ if [ -f '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then sour
 # Vim mode
 bindkey -v
 
-bindkey '^P' up-history
-bindkey '^N' down-history
 
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
@@ -128,8 +126,19 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+# Fix a bug in zsh-autosuggestions that overrides these somehow
+bindkey '\e[A' up-line-or-search
+bindkey '\e[B' down-line-or-search
+
+bindkey '^P' up-line-or-search
+bindkey '^N' down-line-or-search
+
 export KEYTIMEOUT=1
 
 export FZF_DEFAULT_OPTS='--height 20%'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [ -d "$HOME/Library/Python/3.6/bin/" ] ; then
+    PATH="$HOME/Library/Python/3.6/bin/:$PATH"
+fi
