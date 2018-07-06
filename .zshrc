@@ -116,7 +116,6 @@ if [ -f '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then sour
 # Vim mode
 bindkey -v
 
-
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
     RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
@@ -125,10 +124,6 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-# Fix a bug in zsh-autosuggestions that overrides these somehow
-bindkey '\e[A' up-line-or-search
-bindkey '\e[B' down-line-or-search
 
 bindkey '^P' up-line-or-search
 bindkey '^N' down-line-or-search
