@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.tabSize": 2,
-    "editor.fontFamily": "PragmataPro, Fira Code, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "PragmataPro",
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.fontWeight": "normal",
@@ -9,12 +9,13 @@
     "workbench.statusBar.visible": false,
     "workbench.colorTheme": "Dracula",
     "xo.enable": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": -1,
     "editor.cursorBlinking": "solid",
     "vim.useSystemClipboard": true,
     "editor.folding": false,
     "editor.glyphMargin": 0,
-    "vim.disableExtension": true,
+    "vim.disableExtension": false,
     "telemetry.enableTelemetry": false,
     "files.autoSave": "on",
+    "breadcrumbs.enabled": true,
   }

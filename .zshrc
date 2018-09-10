@@ -49,7 +49,7 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git)
 
 # User configuration
 
@@ -130,10 +130,16 @@ bindkey '^N' down-line-or-search
 
 export KEYTIMEOUT=1
 
-export FZF_DEFAULT_OPTS='--height 20%'
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -d "$HOME/Library/Python/3.6/bin/" ] ; then
     PATH="$HOME/Library/Python/3.6/bin/:$PATH"
 fi
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bright grey'
+
+export FZF_DEFAULT_OPTS="
+	--height 20%
+"
+ 
+export OPENFAAS_URL=https://gateway.k8s.win/
