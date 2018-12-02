@@ -2,7 +2,7 @@
 call plug#begin('~/.config/nvim/plugins')
 
 " Vim Airline
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline', { 'commit': 'ada0ba8ae3eea778d165ec4794ee557df98fab87' }
 Plug 'vim-airline/vim-airline-themes'
 
 " fzf
@@ -20,6 +20,7 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 Plug 'prettier/vim-prettier', { 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'md'] }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'w0rp/ale'
@@ -28,9 +29,18 @@ Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Completion
-Plug 'roxma/nvim-completion-manager'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+" Plug 'ncm2/ncm2'
+" Plug 'roxma/nvim-yarp'
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-tmux'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+Plug 'zxqfl/tabnine-vim'
 
 " Search
 Plug 'eugen0329/vim-esearch'
@@ -151,12 +161,15 @@ set mouse=a
 " fzf settings
 nmap ; :Buffers<CR>
 nnoremap <C-g> :GitFiles?<CR>
-nnoremap <C-p> :GitFiles<CR>
+nnoremap <C-p> :Files<CR>
 
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='dracula'
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+" let g:tmuxline_powerline_separators = 0
 set laststatus=2
 
 let g:tmuxline_preset = {
@@ -171,8 +184,6 @@ let g:tmuxline_preset = {
 				\ 'options': {
         \'status-justify': 'left'}
         \}
-
-let g:tmuxline_powerline_separators = 1
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
@@ -195,25 +206,9 @@ set fillchars=""
 " Ale
 let g:ale_lint_on_enter = 0
 
-" let g:ale_sign_column_always = 1
-" let g:ale_sign_error = '🚨'
-" let g:ale_sign_warning = '⚠️'
-" 
-" highlight clear ALEErrorSign
-" highlight clear ALEWarningSign
-
-" let g:ale_linters = {
-" \   'javascript': ['standard'],
-" \}
-" let g:ale_javascript_xo_use_global = 0
-" let g:ale_javascript_standard_use_global = 0
-" 
-"  " , 'xo', 'eslint'
-" let g:ale_fixers = {
-" \   'javascript': ['prettier', 'standard'],
-" \}
-" let g:airline#extensions#ale#enabled = 1
-" let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '•'
+let g:ale_sign_warning = '⚠️'
 
 " Use C-k and C-j to skip to next/previous ALE issues
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -240,9 +235,6 @@ set wildignore+=node_modules/**
 " Fix neovim not finding files using `gf`
 set suffixesadd=.js,.css
 
-" Enable deoplete
-let g:deoplete#enable_at_startup = 1
-
 " Search
 let g:esearch = {
   \ 'adapter':    'grep',
@@ -254,11 +246,13 @@ let g:esearch = {
 
 let g:esearch#adapter#grep#options = '--exclude-dir=node_modules'
 
-" Completion https://github.com/roxma/nvim-completion-manager#features
-" Enter sends new line and hides completion bar
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select popup menu
+" enable ncm2 for all buffers
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" 
+" " IMPORTANTE: :help Ncm2PopupOpen for more information
+" set completeopt=noinsert,menuone,noselect
+" 
+" " Use <TAB> to select popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -280,22 +274,6 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 set showcmd
 hi Normal ctermbg=NONE guibg=NONE
-
-" Toggle tabs
-function TabToggle()
-	if &expandtab
-    set tabstop=2
-    set softtabstop=2
-    set shiftwidth=2
-		set shiftwidth=2
-		set softtabstop=0
-		set noexpandtab
-	else
-		set shiftwidth=2
-		set softtabstop=2
-		set expandtab
-	endif
-endfunction
 
 " Enable per project configuration https://andrew.stwrt.ca/posts/project-specific-vimrc/
 set exrc

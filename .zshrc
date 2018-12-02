@@ -4,8 +4,8 @@ export ZSH=/Users/hugo/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="dracula"
+# time that oh-my-zsh is loaded.  ZSH_THEME="dracula"
+ZSH_THEME='dracula'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -136,10 +136,25 @@ if [ -d "$HOME/Library/Python/3.6/bin/" ] ; then
     PATH="$HOME/Library/Python/3.6/bin/:$PATH"
 fi
 
+PATH=$PATH:/Applications/Relica.app/Contents/MacOS
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bright grey'
 
+export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS="
-	--height 20%
+  --height 20%
 "
  
-export OPENFAAS_URL=https://gateway.k8s.win/
+export OPENFAAS_URL=https://hugo:healthy-montana-mushy-jut-advert@openfaas.ii.md
+
+alias cat=bat
+alias ping=prettyping
+
+export LIBRARY_PATH=/usr/local/lib
+export CPLUS_INCLUDE_PATH=/usr/local/include
+# Fix for installing node-rdkafka
+export CPPFLAGS=-I/usr/local/opt/openssl/include
+export LDFLAGS=-L/usr/local/opt/openssl/lib
+
+# Save history in iex
+export ERL_AFLAGS="-kernel shell_history enabled"
