@@ -137,6 +137,7 @@ if [ -d "$HOME/Library/Python/3.6/bin/" ] ; then
 fi
 
 PATH=$PATH:/Applications/Relica.app/Contents/MacOS
+PATH=$PATH:~/.emacs.d/bin
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bright grey'
 
@@ -158,3 +159,14 @@ export LDFLAGS=-L/usr/local/opt/openssl/lib
 
 # Save history in iex
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+export KUBECONFIG=~/.kube/config
+export KUBECONFIG=$KUBECONFIG:~/madrisa-nyc-01-kubeconfig.yaml
+export KUBECONFIG=$KUBECONFIG:~/sosto-kubeconfig.yaml
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+export LDFLAGS="-L/usr/local/opt/openssl/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include"
+
+# export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"

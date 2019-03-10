@@ -11,7 +11,7 @@ Plug 'junegunn/fzf.vim'
 
 " Nerdtree & icons
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Syntax
@@ -28,17 +28,9 @@ Plug 'w0rp/ale'
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Plug 'ludovicchabant/vim-gutentags'
+
 " Completion
-" Plug 'ncm2/ncm2'
-" Plug 'roxma/nvim-yarp'
-
-" NOTE: you need to install completion sources to get completions. Check
-" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-" Plug 'ncm2/ncm2-bufword'
-" Plug 'ncm2/ncm2-tmux'
-" Plug 'ncm2/ncm2-path'
-" Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'zxqfl/tabnine-vim'
 
@@ -50,6 +42,7 @@ Plug 'vim-scripts/delimitMate.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'wellle/targets.vim'
+Plug 'easymotion/vim-easymotion'
 
 " Layout, panes, etc
 Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
@@ -162,6 +155,7 @@ set mouse=a
 nmap ; :Buffers<CR>
 nnoremap <C-g> :GitFiles?<CR>
 nnoremap <C-p> :Files<CR>
+nnoremap <C-t> :Tags<CR>
 
 " Vim Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -204,11 +198,10 @@ endif
 set fillchars=""
 
 " Ale
-let g:ale_lint_on_enter = 0
-
+let g:ale_lint_on_enter = 1
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '•'
-let g:ale_sign_warning = '⚠️'
+" let g:ale_sign_error = '•'
+" let g:ale_sign_warning = '⚠️'
 
 " Use C-k and C-j to skip to next/previous ALE issues
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -242,6 +235,7 @@ let g:esearch = {
   \ 'out':        'win',
   \ 'batch_size': 1000,
   \ 'use':        ['visual', 'hlsearch', 'last'],
+	\ 'default_mappings': 1,
   \}
 
 let g:esearch#adapter#grep#options = '--exclude-dir=node_modules'
@@ -263,9 +257,9 @@ tnoremap kj <C-\><C-n>
 map <C-n> :NERDTreeToggle<CR>
 
 " Vim devicons
-let g:webdevicons_enable_nerdtree = 1
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+" let g:webdevicons_enable_nerdtree = 1
+" let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 
 " toggle invisible characters
 " set list
@@ -278,3 +272,6 @@ hi Normal ctermbg=NONE guibg=NONE
 " Enable per project configuration https://andrew.stwrt.ca/posts/project-specific-vimrc/
 set exrc
 set secure
+
+" Gutentags status line
+" set statusline+=%{gutentags#statusline()}
