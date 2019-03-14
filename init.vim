@@ -34,9 +34,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'zxqfl/tabnine-vim'
 
-" Search
-Plug 'eugen0329/vim-esearch'
-
 " Movement, etc
 Plug 'vim-scripts/delimitMate.vim'
 Plug 'tpope/vim-surround'
@@ -86,6 +83,8 @@ set rnu
 set nu
 
 set title
+
+set nowrap " Don't wrap lines of text
 
 " Colorscheme
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -144,7 +143,7 @@ nnoremap ^ <nop>
 " highlight last inserted text
 nnoremap gV `[v`]
 
-let mapleader=" "       " leader is space
+let mapleader=" " " leader is space
 
 " jj is escape
 inoremap jj <esc>
@@ -161,9 +160,6 @@ nnoremap <C-t> :Tags<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='dracula'
-" let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
-" let g:tmuxline_powerline_separators = 0
 set laststatus=2
 
 let g:tmuxline_preset = {
@@ -255,23 +251,9 @@ tnoremap kj <C-\><C-n>
 
 " NerdTree Mapping
 map <C-n> :NERDTreeToggle<CR>
-
-" Vim devicons
-" let g:webdevicons_enable_nerdtree = 1
-" let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-" let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
-
-" toggle invisible characters
-" set list
-" set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-" set showbreak=↪
-
 set showcmd
 hi Normal ctermbg=NONE guibg=NONE
 
 " Enable per project configuration https://andrew.stwrt.ca/posts/project-specific-vimrc/
 set exrc
 set secure
-
-" Gutentags status line
-" set statusline+=%{gutentags#statusline()}
