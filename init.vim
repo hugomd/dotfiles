@@ -1,10 +1,8 @@
 " Specify a directory for plugins (for Neovim: ~/.config/nvim/plugins)
 call plug#begin('~/.config/nvim/plugins')
 
-" Vim Airline
-Plug 'vim-airline/vim-airline', { 'commit': 'ada0ba8ae3eea778d165ec4794ee557df98fab87' }
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
+" Vim Lightline
+Plug 'itchyny/lightline.vim'
 
 " fzf
 Plug '/usr/local/opt/fzf'
@@ -51,9 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
-" Plug 'dracula/vim'
-" Plug 'yuttie/hydrangea-vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -86,10 +82,6 @@ set nu
 
 set title
 
-set nowrap " Don't wrap lines of text
-set colorcolumn=80 " Ensure lines are no longer than 80 characters
-set textwidth=80 " In insert mode, force text to the next line if over 80 chars
-
 " Colorscheme
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -105,11 +97,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_uniform_status_lines = 1
-let g:nord_cursor_line_number_background = 1
-colorscheme nord
+colorscheme challenger_deep
+let g:lightline = { 'colorscheme': 'challenger_deep'}
 
 " highlight current line and column
 set cursorline
@@ -165,12 +154,7 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-t> :Tags<CR>
 
 " Vim Lightline
-
 set laststatus=2
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme='nord'
 
 " allows cursor change in tmux mode
 if exists('$TMUX')
@@ -254,3 +238,4 @@ set showcmd
 " Enable per project configuration https://andrew.stwrt.ca/posts/project-specific-vimrc/
 set exrc
 set secure
+set noshowmode
