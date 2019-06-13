@@ -27,7 +27,8 @@ Plug 'w0rp/ale'
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-" Plug 'ludovicchabant/vim-gutentags'
+" Undo tree
+Plug 'mbbill/undotree'
 
 " Completion
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
@@ -198,10 +199,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-
-" Move a line up or down
-nmap N :m +1<CR>
-nmap M :m -2<CR>
 
 " Ignore node_modules in vimgrep
 set wildignore+=node_modules/**
