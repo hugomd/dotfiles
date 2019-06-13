@@ -50,7 +50,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'dracula/vim'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -98,8 +98,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme challenger_deep
-let g:lightline = { 'colorscheme': 'challenger_deep'}
+color dracula
+let g:lightline = { 'colorscheme': 'Dracula'}
 
 " highlight current line and column
 set cursorline
