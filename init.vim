@@ -42,7 +42,7 @@ Plug 'wellle/targets.vim'
 Plug 'easymotion/vim-easymotion'
 
 " Layout, panes, etc
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+" Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
 " Git
 Plug 'mhinz/vim-signify'
@@ -78,8 +78,8 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-set rnu
-set nu
+" set rnu
+" set nu
 
 set title
 
