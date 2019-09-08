@@ -47,3 +47,6 @@ set -x LDFLAGS "-L/usr/local/opt/openssl/lib"
 set -x CPPFLAGS "-I/usr/local/opt/openssl/include"
 
 set -x GO111MODULE on
+source ~/.asdf/asdf.fish
+
+set -x SPACEFISH_KUBECONTEXT_SHOW false

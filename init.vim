@@ -33,6 +33,7 @@ Plug 'mbbill/undotree'
 " Completion
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'zxqfl/tabnine-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Movement, etc
 Plug 'vim-scripts/delimitMate.vim'
@@ -44,6 +45,9 @@ Plug 'easymotion/vim-easymotion'
 " Layout, panes, etc
 " Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
+" Tag bar
+Plug 'liuchengxu/vista.vim'
+
 " Git
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
@@ -51,6 +55,7 @@ Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
 Plug 'dracula/vim'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -94,12 +99,12 @@ set title
 "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
 "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
 " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-if (has("termguicolors"))
+if (has('nvim') || has("termguicolors"))
   set termguicolors
 endif
 
-color dracula
-let g:lightline = { 'colorscheme': 'Dracula'}
+colorscheme challenger_deep
+let g:lightline = { 'colorscheme': 'challenger_deep'}
 
 " highlight current line and column
 set cursorline
@@ -206,24 +211,6 @@ set wildignore+=node_modules/**
 " Fix neovim not finding files using `gf`
 set suffixesadd=.js,.css
 
-" Search
-let g:esearch = {
-  \ 'adapter':    'grep',
-  \ 'backend':    'nvim',
-  \ 'out':        'win',
-  \ 'batch_size': 1000,
-  \ 'use':        ['visual', 'hlsearch', 'last'],
-	\ 'default_mappings': 1,
-  \}
-
-let g:esearch#adapter#grep#options = '--exclude-dir=node_modules'
-
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-" 
-" " IMPORTANTE: :help Ncm2PopupOpen for more information
-" set completeopt=noinsert,menuone,noselect
-" 
 " " Use <TAB> to select popup menu
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -240,3 +227,19 @@ set showcmd
 set exrc
 set secure
 set noshowmode
+
+set scrolloff=5 " Always show at least 5 lines at the top and the bottom
+
+" Vista
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" How each level is indented and what to prepend.
+" This could make the display more compact or more spacious.
+" e.g., more compact: ["▸ ", ""]
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+
+" Executive used when opening vista sidebar without specifying it.
+" See all the avaliable executives via `:echo g:vista#executives`.
+let g:vista_default_executive = 'ctags'
+
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
