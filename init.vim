@@ -228,7 +228,7 @@ set exrc
 set secure
 set noshowmode
 
-set scrolloff=5 " Always show at least 5 lines at the top and the bottom
+set scrolloff=10 " Always show at least 10 lines at the top and the bottom
 
 " Vista
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
