@@ -11,7 +11,7 @@ Plug 'junegunn/fzf.vim'
 " Nerdtree & icons
 Plug 'scrooloose/nerdtree'
 " Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Syntax
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
@@ -25,14 +25,14 @@ Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'w0rp/ale'
 
 " Autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Undo tree
 Plug 'mbbill/undotree'
 
 " Completion
 Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
-Plug 'zxqfl/tabnine-vim'
+" Plug 'zxqfl/tabnine-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Movement, etc
@@ -54,14 +54,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 
 " Colorschemes
-Plug 'dracula/vim'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+" Plug 'dracula/vim'
+Plug 'overcache/NeoSolarized'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
 
 " Initialize plugin system
 call plug#end()
+
+let g:deoplete#enable_at_startup = 1
 
 " Defaults
 filetype plugin on
@@ -103,8 +105,8 @@ if (has('nvim') || has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme challenger_deep
-let g:lightline = { 'colorscheme': 'challenger_deep'}
+set background=dark
+colorscheme NeoSolarized
 
 " highlight current line and column
 set cursorline
@@ -160,6 +162,9 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-t> :Tags<CR>
 
 " Vim Lightline
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
 set laststatus=2
 
 " allows cursor change in tmux mode

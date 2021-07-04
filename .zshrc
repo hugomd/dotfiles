@@ -5,7 +5,7 @@ export ZSH=/Users/hugo/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.  ZSH_THEME="dracula"
-ZSH_THEME='dracula'
+ZSH_THEME='dracula-pro'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -49,7 +49,7 @@ ZSH_THEME='dracula'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose)
+plugins=(git docker docker-compose z)
 
 # User configuration
 
@@ -86,32 +86,20 @@ source $ZSH/oh-my-zsh.sh
 # Must remain at the END of this file
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 export PATH=/usr/local/sbin:$PATH
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ctags=/usr/local/bin/ctags
-
-# Pure prompt
-# autoload -U promptinit; promptinit
-# PURE_PROMPT_SYMBOL=↳
-# prompt pure
 
 export PATH="$HOME/.yarn/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/.cargo/env
+export PATH=$PATH:$HOME/bin
 
 alias npmp='npm --userconfig=~/.npmrc-personal'
 alias vim=nvim
 alias ls=exa
 alias marked="open -a Marked"
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/hugo/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/hugo/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hugo/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+. /usr/local/share/zsh/site-functions
+. /usr/local/etc/bash_completion.d
 
 # Vim mode
 bindkey -v
@@ -136,37 +124,87 @@ if [ -d "$HOME/Library/Python/3.6/bin/" ] ; then
     PATH="$HOME/Library/Python/3.6/bin/:$PATH"
 fi
 
-PATH=$PATH:/Applications/Relica.app/Contents/MacOS
-PATH=$PATH:~/.emacs.d/bin
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='bright grey'
 
 export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_DEFAULT_OPTS="
-  --height 20%
-"
- 
-export OPENFAAS_URL=https://hugo:healthy-montana-mushy-jut-advert@openfaas.ii.md
+
+_gen_fzf_default_opts() {
+  local color00='#002b36'
+  local color01='#073642'
+  local color02='#586e75'
+  local color03='#657b83'
+  local color04='#839496'
+  local color05='#93a1a1'
+  local color06='#eee8d5'
+  local color07='#fdf6e3'
+  local color08='#dc322f'
+  local color09='#cb4b16'
+  local color0A='#b58900'
+  local color0B='#859900'
+  local color0C='#2aa198'
+  local color0D='#268bd2'
+  local color0E='#6c71c4'
+  local color0F='#d33682'
+
+  # Solarized Dark color scheme for fzf
+  #export FZF_DEFAULT_OPTS="
+  #  --color fg:-1,bg:-1,hl:$blue,fg+:$base2,bg+:$base02,hl+:$blue
+  #  --color info:$yellow,prompt:$yellow,pointer:$base3,marker:$base3,spinner:$yellow
+  #"
+  export FZF_DEFAULT_OPTS="
+     --height 20%
+     --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
+     --color=fg:$color04,header:$color0D,info:$color0A,pointer:$color0C
+     --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color0D
+  "
+}
+_gen_fzf_default_opts
 
 alias cat=bat
-alias ping=prettyping
 
 export LIBRARY_PATH=/usr/local/lib
 export CPLUS_INCLUDE_PATH=/usr/local/include
-# Fix for installing node-rdkafka
-export CPPFLAGS=-I/usr/local/opt/openssl/include
-export LDFLAGS=-L/usr/local/opt/openssl/lib
 
-# Save history in iex
+nvm() {
+    unset -f nvm
+    export NVM_DIR=~/.nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    nvm "$@"
+}
+
+node() {
+    unset -f node
+    export NVM_DIR=~/.nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    node "$@"
+}
+
+npm() {
+    unset -f npm
+    export NVM_DIR=~/.nvm
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    npm "$@"
+}
+
+. $(brew --prefix asdf)/asdf.sh
+
+export KUBECONFIG=$KUBECONFIG:~/.kube/config:~/.kube/sosto-config
+
+alias k=kubectl
+
+export EDITOR=nvim
+
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-export KUBECONFIG=~/.kube/config
-export KUBECONFIG=$KUBECONFIG:~/madrisa-nyc-01-kubeconfig.yaml
-export KUBECONFIG=$KUBECONFIG:~/sosto-kubeconfig.yaml
+autoload -Uz compinit 
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
-export PATH="/usr/local/opt/openssl/bin:$PATH"
+zstyle ':fzf-tab:*' default-color $'\033[241m'
+# disable sort when completing options of any command
+zstyle ':completion:*:git-checkout:*' sort false
 
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
-
-# export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
+export BAT_THEME="Solarized (dark)"
